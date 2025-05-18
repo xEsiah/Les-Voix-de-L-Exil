@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <?php
-require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../includes/globalHead.html';
 require_once __DIR__ . '/header.html'; ?>
 

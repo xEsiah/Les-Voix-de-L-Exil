@@ -1,5 +1,54 @@
-.introduction {
+/* --- Base --- */
+body {
+  background-color: #555555;
+  color: #e0e0e0;
   font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+header,
+footer {
+  background-color: #1a1a1d;
+  color: #f0f0f0;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  border-color: #c3073f;
+  border-style: solid;
+}
+
+header {
+  padding: 20px;
+  border-width: 0 0 2px 0;
+}
+
+footer {
+  padding: 15px;
+  border-width: 2px 0 0 0;
+  font-size: 0.9em;
+  position: relative;
+  z-index: 100;
+}
+
+/* --- Titres --- */
+h1 {
+  font-family: "Cinzel", serif;
+  font-size: 3em;
+  margin-top: 0;
+}
+
+h2,
+h3 {
+  font-family: "Cinzel", serif;
+  font-size: 2em;
+  margin: 0;
+}
+
+/* --- Introduction --- */
+.introduction {
+  position: relative; /* obligatoire pour que z-index fonctionne */
+  z-index: 1; /* au-dessus des sprites */
   font-size: 1.2em;
   padding: 60px 20px;
   max-width: 900px;
@@ -9,7 +58,7 @@
 }
 
 .intro-box {
-  background-color: #1e1e22;
+  background-color: #1e1e22b0;
   border-left: 5px solid #c3073f;
   padding: 30px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -21,21 +70,21 @@
   font-weight: bold;
 }
 
-.intro-box .quote {
-  font-style: italic;
-  color: #aaaaaa;
-  text-align: right;
-  margin-top: 40px;
-}
+.intro-box .quote,
 .intro-box .author {
   color: #aaaaaa;
   text-align: right;
 }
 
+.intro-box .quote {
+  font-style: italic;
+  margin-top: 40px;
+}
+
+/* --- Bouton principal --- */
 .cta-button {
   display: block;
   margin: 40px auto 0;
-  width: fit-content;
   padding: 12px 28px;
   background-color: #c3073f;
   color: white;
@@ -44,50 +93,52 @@
   font-weight: bold;
   font-size: 1em;
   transition: background-color 0.3s, transform 0.2s;
+  width: fit-content;
 }
 
 .cta-button:hover {
   background-color: #a40632;
   transform: scale(1.05);
 }
-body {
-  background-color: #555555;
-  color: #e0e0e0;
-  font-family: "Roboto", sans-serif;
-  line-height: 1.6;
-  margin: 0;
-}
-footer {
-  background-color: #1a1a1d;
-  color: #bbbbbb;
-  padding: 15px;
-  text-align: center;
-  border-top: 2px solid #c3073f;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.9em;
-}
 
-header {
-  background-color: #1a1a1d;
-  color: #f0f0f0;
-  padding: 20px;
-  text-align: center;
-  border-bottom: 2px solid #c3073f;
-}
-
-h1 {
-  font-family: "Cinzel", serif;
-  font-size: 3em;
-  margin-top: 0;
-}
-h2,
-h3 {
-  font-family: "Cinzel", serif;
-  font-size: 2em;
-  margin: 0;
-}
+/* --- Images --- */
 .main-illustration {
-  width: 100%;
-  margin: 0 auto;
   display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Sprites --- */
+.sprite {
+  position: absolute;
+  bottom: 0;
+  max-height: 70vh;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+  animation: fadeIn 1s ease-out;
+}
+
+.sprite-left {
+  left: 5%;
+}
+
+.sprite-right {
+  right: 5%;
+}
+
+.sprite-flip {
+  transform: scaleX(-1);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
 }

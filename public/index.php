@@ -1,8 +1,4 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../includes/header.html';
 ?>
 
@@ -13,9 +9,8 @@ require_once __DIR__ . '/../includes/header.html';
     <section class="introduction">
         <div class="intro-box">
             <p>
-                Dans les profondeurs du <strong>Bastion Immortel</strong>, là où résonnent les cris des arènes et où le
-                sang sèche sur
-                les chaînes, deux jeunes hommes rêvent de liberté.
+                Dans les profondeurs du <strong>Bastion Immortel</strong>, là où résonnent les cris des combattants des
+                arènes et où le sang sèche à même la pierre, deux jeunes hommes rêvent de liberté.
                 <strong>Azhari</strong>, ancien érudit réduit au rôle de gladiateur, et <strong>Lysandor</strong>,
                 héritier d’un nom maudit, souhaitent fuir l’ombre de Noxus dans l’espoir d’un renouveau.
             </p>
@@ -38,6 +33,9 @@ require_once __DIR__ . '/../includes/header.html';
             </a>
         </div>
     </section>
+    <img src="images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left" />
+    <img src="images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right" />
+
 
 
 </body>
