@@ -1,0 +1,7 @@
+.env
+vendor
+config
+composer.lock
+composer.json
+Dockerfile
+Procfile
