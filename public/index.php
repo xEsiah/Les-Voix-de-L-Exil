@@ -2,8 +2,8 @@
 require_once __DIR__ . '/../includes/header.html';
 ?>
 
-<body>
-    <!-- <img class="characterRightSide" src="images/LysandorDuCouteur.png" alt="Sprite Lysandor"> -->
+<body class="background-introduction">
+
     <!-- inclure les renders des personnages et le code permettant d'alterner leur positions (et leur luminosité en fonction de qui parle) 
      sur le background quand le joueur passse au dialogue suivant -->
     <section class="introduction">
@@ -35,8 +35,5 @@ require_once __DIR__ . '/../includes/header.html';
     </section>
     <img src="images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left" />
     <img src="images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right" />
-
-
-
 </body>
 <?php require_once __DIR__ . '/../includes/footer.html'; ?>

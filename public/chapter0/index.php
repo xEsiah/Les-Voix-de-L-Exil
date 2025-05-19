@@ -4,11 +4,21 @@
 require_once __DIR__ . '/../../includes/globalHead.html';
 require_once __DIR__ . '/header.html'; ?>
 
-<body><img class="main-illustration" src="../images/NoxusInterArene.jpg" alt="Image de l'arène de Noxus">
-    <!-- inclure les renders des personnages et le code permettant d'alterner leur positions (et leur luminosité en fonction de qui parle) 
-     sur le background quand le joueur passse au dialogue suivant -->
-</body>
+<body class="background-prologue">
+    <div class="page-container">
+        <img src="../images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left" id="azhari" />
+        <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right" id="lysandor" />
+        <div class="dialogues">
+            <div><strong>Azhari :</strong> Nous devons agir maintenant.</div>
+            <div><strong>Lysandor :</strong> Ce n’est pas encore le moment.</div>
+            <div><strong>Azhari :</strong> Trop de temps a déjà été perdu.</div>
+            <div><strong>Lysandor :</strong> Alors, faisons-le à ma manière.</div>
+        </div>
+        <button class="cta-button-dialogue" onclick="nextDialogue()">Suivant</button>
+        <div id="dialogueBox"></div>
 
-<?php require_once __DIR__ . '/../../includes/footer.html'; ?>
+    </div>
+    <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
+</body>
 
 </html>

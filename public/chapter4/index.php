@@ -4,7 +4,10 @@
 require_once __DIR__ . '/../../includes/globalHead.html';
 require_once __DIR__ . '/header.html'; ?>
 
-<body><img src="assets/.jpg" alt="Image de Piltover"></body>
+<body class="background-chapter4">
+    <!-- inclure les renders des personnages et le code permettant d'alterner leur positions (et leur luminosité en fonction de qui parle) 
+     sur le background quand le joueur passse au dialogue suivant -->
+</body>
 
 <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
 
