@@ -3,30 +3,5 @@
 @import url("./components.css");
 @import url("./dialogue.css");
 @import url("./animations.css");
-@import url("./backgrounds.css");
 @import url("./narrations.css");
-
-/* Images spécifiques */
-.background-introduction {
-  background-image: url("/images/viewImmortalBastionFromOutside.jpg");
-}
-
-.background-prologue {
-  background-image: url("../images/viewNoxusInterArene.jpg");
-}
-
-.background-chapter1 {
-  background-image: url("../images/viewImmortalBastionFromInside.jpg");
-}
-
-.background-chapter2 {
-  background-image: url("../images/viewRandomNoxusGate.jpg");
-}
-
-.background-chapter3 {
-  background-image: url("../images/viewZaunDownSide.jpg");
-}
-
-.background-chapter4 {
-  background-image: url("../images/viewPiltoverDownSide.jpeg");
-}
+@import url("./background.css");
