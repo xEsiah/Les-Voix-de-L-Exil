@@ -13,14 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
     lysandor.classList.remove("active-speaker");
     dialogueBox.classList.remove("dialogue-left", "dialogue-right");
 
-    const text = dialogueBox.textContent.toLowerCase();
+    const strongEl = dialogueBox.querySelector("strong");
+    if (strongEl) {
+      let firstWord = strongEl.textContent.split(":")[0].trim().toLowerCase();
 
-    if (text.includes("azhari")) {
-      azhari.classList.add("active-speaker");
-      dialogueBox.classList.add("dialogue-left");
-    } else if (text.includes("lysandor")) {
-      lysandor.classList.add("active-speaker");
-      dialogueBox.classList.add("dialogue-right");
+      if (firstWord === "azhari") {
+        azhari.classList.add("active-speaker");
+        dialogueBox.classList.add("dialogue-left");
+        console.log("Azhari is speaking");
+      } else if (firstWord === "lysandor") {
+        lysandor.classList.add("active-speaker");
+        dialogueBox.classList.add("dialogue-right");
+        console.log("Lysandor is speaking");
+      }
     }
   }
 

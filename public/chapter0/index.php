@@ -9,11 +9,22 @@ require_once __DIR__ . '/header.html'; ?>
         <img src="../images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left" id="azhari" />
         <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right" id="lysandor" />
         <div class="dialogues">
-            <div><strong>Azhari :</strong> Nous devons agir maintenant.</div>
-            <div><strong>Lysandor :</strong> Ce n’est pas encore le moment.</div>
-            <div><strong>Azhari :</strong> Trop de temps a déjà été perdu.</div>
-            <div><strong>Lysandor :</strong> Alors, faisons-le à ma manière.</div>
+            <div><strong>Azhari :</strong> Cette ville... ce tombeau... Ils nous forgent à coups de chaînes et
+                d’illusions. Depuis que j'ai foulé les pierres de cette cité, je ne me souviens plus de ce que c'est
+                que de sourire.</div>
+            <div><strong>Lysandor :</strong> Ici, on ne vit pas. On survit. Et si tu n'es
+                pas assez fort... tu n'es plus rien.</div>
+            <div><strong>Azhari :</strong> Nous sommes des ombres ici, des armes qu'ils dressent... Moi, fils d'érudit,
+                ne servant qu'à améliorer leur technologie. Toi, héritier d'une lignée condamnée à ne connaître que la
+                guerre...</div>
+            <div><strong>Lysandor :</strong> Et pourtant, un autre chemin existe, Azhari... Un lieu où l'esprit triomphe
+                du glaive. Piltover.</div>
+            <div><strong>Azhari :</strong>Alors fuyons. Laissons derrière nous cette prison de pierre. Devenons ce que
+                nous choisissons d'être.</div>
+            <div><strong>Azhari :</strong>Es-tu prêt à renoncer à tout ? Même à ton nom ?</div>
+            <div><strong>Lysandor :</strong>Je suis prêt à naître de nouveau.</div>
         </div>
+
         <button class="cta-button-dialogue" onclick="nextDialogue()">Suivant</button>
         <div id="dialogueBox"></div>
 
