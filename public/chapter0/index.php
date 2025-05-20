@@ -5,10 +5,16 @@ require_once __DIR__ . '/../../includes/globalHead.html';
 require_once __DIR__ . '/header.html'; ?>
 
 <body class="background-prologue">
+    <div id="narration-box" class="narration-hidden">
+        <p id="narration-text"></p>
+    </div>
+
     <div class="page-container">
-        <img src="../images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left" id="azhari" />
-        <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right" id="lysandor" />
-        <div class="dialogues">
+        <img src="../images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left invisible-init"
+            id="azhari" />
+        <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right invisible-init"
+            id="lysandor" />
+        <div class="dialogues"> <!-- Inclure les dialogues selon cette structure -->
             <div><strong>Azhari :</strong> Cette ville... ce tombeau... Ils nous forgent à coups de chaînes et
                 d’illusions. Depuis que j'ai foulé les pierres de cette cité, je ne me souviens plus de ce que c'est
                 que de sourire.</div>
@@ -25,7 +31,7 @@ require_once __DIR__ . '/header.html'; ?>
             <div><strong>Lysandor :</strong>Je suis prêt à naître de nouveau.</div>
         </div>
 
-        <button class="cta-button-dialogue" onclick="nextDialogue()">Suivant</button>
+        <button class="cta-button-dialogue invisible-init" onclick="nextDialogue()">Suivant</button>
         <div id="dialogueBox"></div>
 
     </div>

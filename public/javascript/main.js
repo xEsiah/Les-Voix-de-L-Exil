@@ -53,4 +53,41 @@ document.addEventListener("DOMContentLoaded", () => {
       index++;
     }
   };
+  showNarration(
+    "Dans les entrailles de Noxus, deux âmes cherchent encore la lumière...",
+    4000,
+    () => {
+      const sprites = document.querySelectorAll(".sprite");
+      const button = document.querySelector(".cta-button-dialogue");
+
+      // Supprime d’abord invisible-init pour déclencher la transition proprement
+      sprites.forEach((el) => el.classList.remove("invisible-init"));
+      button.classList.remove("invisible-init");
+
+      // Ajoute ensuite fade-in (déclenche le transition)
+      setTimeout(() => {
+        sprites.forEach((el) => el.classList.add("fade-in"));
+        button.classList.add("fade-in");
+      }, 50); // petit délai pour que le navigateur applique le changement
+    }
+  );
 });
+
+function showNarration(text, duration = 3000, callback = null) {
+  const box = document.getElementById("narration-box");
+  const textElement = document.getElementById("narration-text");
+
+  textElement.textContent = text;
+  box.classList.add("show");
+
+  setTimeout(() => {
+    box.classList.remove("show");
+
+    // Supprime invisible-init pour déclencher les animations existantes
+    document.querySelectorAll(".invisible-init").forEach((el) => {
+      el.classList.remove("invisible-init");
+    });
+
+    if (callback) callback();
+  }, duration);
+}

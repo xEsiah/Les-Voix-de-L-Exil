@@ -1,0 +1,17 @@
+.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+.invisible-init {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.sprite.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cta-button-dialogue.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
