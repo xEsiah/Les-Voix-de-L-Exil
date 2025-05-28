@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const azhari = document.getElementById("azhari");
   const lysandor = document.getElementById("lysandor");
   const darius = document.getElementById("darius");
+  const contrebandier = document.getElementById("contrebandier");
   const dialogueBox = document.getElementById("dialogueBox");
   const button = document.getElementById("cta-button");
 
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Met en surbrillance le locuteur actif selon le dialogue
   function highlightSpeakerFromDialogue() {
-    [azhari, lysandor, darius].forEach((el) => {
+    [azhari, lysandor, darius, contrebandier].forEach((el) => {
       if (el) el.classList.remove("active-speaker");
     });
     if (dialogueBox)
@@ -88,39 +89,34 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (speaker === "lysandor" && lysandor) {
       lysandor.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-right");
-    } else if (
-      speaker === "darius" &&
-      darius &&
-      chapterClass &&
-      chapterClass[0] !== "background-prologue"
-    ) {
+    } else if (speaker === "darius") {
       darius.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-left");
+    } else if (speaker === "contrebandier" && contrebandier) {
+      contrebandier.classList.add("active-speaker");
+      dialogueBox.classList.add("dialogue-left");
     }
-    if (chapterClass && chapterClass[0] === 'background-chapter1' && nombreClick === 2) {
-        const azhari = document.getElementById("azhari");
-        console.log("bravo");
-
-        // Changer l'image (non-reversed)
-        azhari.src = "../images/AzhariShen.png";
-
-        // Supprimer la classe `sprite-left`
-        azhari.classList.remove("sprite-left");
-
-        // Afficher Darius
-        const darius = document.getElementById("darius");
-        darius.classList.remove("hidden");
-        darius.classList.add("reveal");
-
-        // Ajouter `sprite-right`
-        azhari.classList.add("sprite-right");
+    if (
+      // Apparaition de Darius et changement de côté de Azhari
+      chapterClass &&
+      chapterClass[0] === "background-chapter1" &&
+      nombreClick === 2
+    ) {
+      azhari.src = "../images/AzhariShen.png";
+      // Supprimer la classe `sprite-left`
+      azhari.classList.remove("sprite-left");
+      // Afficher Darius
+      darius.classList.remove("hidden");
+      darius.classList.add("reveal");
+      // Ajouter `sprite-right`
+      azhari.classList.add("sprite-right");
     }
   }
 
   // Affiche le dialogue suivant ou redirige à la fin
   function nextDialogue() {
-    nombreClick ++;
-    console.log(nombreClick)
+    nombreClick++;
+    console.log(nombreClick);
     if (index < dialogues.length) {
       dialogueBox.innerHTML = dialogues[index];
       highlightSpeakerFromDialogue();

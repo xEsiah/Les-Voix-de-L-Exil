@@ -155,7 +155,7 @@
   z-index: 2;
 }
 
-#narration-box {
+/* #narration-box {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.952);
@@ -175,4 +175,4 @@
 #narration-box.show {
   opacity: 1;
   pointer-events: auto;
-}
+} */
