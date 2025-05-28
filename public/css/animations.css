@@ -15,3 +15,11 @@
   opacity: 1;
   pointer-events: auto;
 }
+.hidden {
+  display: none;
+}
+
+.reveal {
+  display: flex;
+}
+

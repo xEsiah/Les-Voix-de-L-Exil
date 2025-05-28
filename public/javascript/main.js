@@ -97,10 +97,30 @@ document.addEventListener("DOMContentLoaded", () => {
       darius.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-left");
     }
+    if (chapterClass && chapterClass[0] === 'background-chapter1' && nombreClick === 2) {
+        const azhari = document.getElementById("azhari");
+        console.log("bravo");
+
+        // Changer l'image (non-reversed)
+        azhari.src = "../images/AzhariShen.png";
+
+        // Supprimer la classe `sprite-left`
+        azhari.classList.remove("sprite-left");
+
+        // Afficher Darius
+        const darius = document.getElementById("darius");
+        darius.classList.remove("hidden");
+        darius.classList.add("reveal");
+
+        // Ajouter `sprite-right`
+        azhari.classList.add("sprite-right");
+    }
   }
 
   // Affiche le dialogue suivant ou redirige à la fin
   function nextDialogue() {
+    nombreClick ++;
+    console.log(nombreClick)
     if (index < dialogues.length) {
       dialogueBox.innerHTML = dialogues[index];
       highlightSpeakerFromDialogue();
@@ -133,5 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  let nombreClick = 0;
   button.addEventListener("click", nextDialogue);
 });

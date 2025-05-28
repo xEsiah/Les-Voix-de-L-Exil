@@ -141,6 +141,10 @@
   right: 5%;
 }
 
+.sprite-right-right {
+  right: 5%;
+}
+
 .sprite-flip {
   transform: scaleX(-1);
 }
