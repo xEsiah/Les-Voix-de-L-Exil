@@ -1,19 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const dialogueElements = document.querySelectorAll(".dialogues div");
-  const dialogues = Array.from(dialogueElements).map((el) => el.innerHTML);
+    const dialogueElements = document.querySelectorAll(".dialogues div");
+    const dialogues = Array.from(dialogueElements).map(el => el.innerHTML);
 
+<<<<<<< Updated upstream
   const azhari = document.getElementById("azhari");
   const lysandor = document.getElementById("lysandor");
   const dialogueBox = document.getElementById("dialogueBox");
   const button = document.getElementById("cta-button");
+=======
+    const azhari = document.getElementById("azhari");
+    const lysandor = document.getElementById("lysandor");
+    const darius = document.getElementById("darius");
+    const dialogueBox = document.getElementById("dialogueBox");
+>>>>>>> Stashed changes
 
-  let index = 0;
+    let index = 0;
 
-  function highlightSpeakerFromDialogue() {
-    azhari.classList.remove("active-speaker");
-    lysandor.classList.remove("active-speaker");
-    dialogueBox.classList.remove("dialogue-left", "dialogue-right");
+    function highlightSpeakerFromDialogue() {
+        azhari.classList.remove("active-speaker", "move-left", "move-right");
+        lysandor.classList.remove("active-speaker", "move-left", "move-right");
+        darius.classList.remove("active-speaker", "move-left", "move-right");
+        darius.classList.remove("visible");
+        dialogueBox.classList.remove("dialogue-left", "dialogue-right");
 
+<<<<<<< Updated upstream
     const strongEl = dialogueBox.querySelector("strong");
     if (strongEl) {
       let firstWord = strongEl.textContent.split(":")[0].trim().toLowerCase();
@@ -24,9 +34,33 @@ document.addEventListener("DOMContentLoaded", () => {
         lysandor.classList.add("active-speaker");
         dialogueBox.classList.add("dialogue-right");
       }
-    }
-  }
+=======
+        const text = dialogueBox.textContent.toLowerCase();
 
+        // Contrôle des positions selon l'index du dialogue
+        if (index === 0) {
+            // Azhari à gauche
+            azhari.classList.add("active-speaker", "move-left");
+            dialogueBox.classList.add("dialogue-left");
+        } else if (index === 1) {
+            // Lysandor à droite
+            lysandor.classList.add("active-speaker", "move-right");
+            dialogueBox.classList.add("dialogue-right");
+        } else if (index === 2) {
+            // Azhari passe à droite
+            azhari.classList.add("active-speaker", "move-right");
+            dialogueBox.classList.add("dialogue-right");
+        } else if (index >= 3) {
+            // Darius arrive à gauche, Azhari et Lysandor sont à droite
+            darius.classList.add("active-speaker", "move-left", "visible");
+            azhari.classList.add("move-right");
+            lysandor.classList.add("move-right");
+            dialogueBox.classList.add("dialogue-left");
+        }
+>>>>>>> Stashed changes
+    }
+
+<<<<<<< Updated upstream
   function showNarration(text, duration = 3000, callback = null) {
     const box = document.getElementById("narration-box");
     const textElement = document.getElementById("narration-text");
@@ -95,4 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 50);
     }
   );
+=======
+    window.nextDialogue = function () {
+        if (index < dialogues.length) {
+            dialogueBox.innerHTML = dialogues[index];
+            highlightSpeakerFromDialogue();
+            index++;
+        }
+    };
+>>>>>>> Stashed changes
 });
