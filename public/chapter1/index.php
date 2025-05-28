@@ -19,17 +19,13 @@ require_once __DIR__ . '/header.html'; ?>
             <div><strong>Azhari : </strong> Si on est vus en train de quitter la place haute du bastion on risque
                 d’éveiller les soupçons non ?</div>
             <div><strong>Lysandor : </strong> Effectivement mais avec ma réputation on devrait pouvoir se justifier à
-                n’importe qui ! Enfin tant que nous n’avons pas à faire à Darius</div>
-            <div><strong>Azhari : </strong> Nous sommes des ombres ici, des armes qu'ils dressent... Moi, fils d'érudit,
-                ne servant qu'à améliorer leur technologie. Toi, héritier d'une lignée condamnée à ne connaître que la
-                guerre...</div>
-            <div><strong>Lysandor : </strong> Et pourtant, un autre chemin existe, Azhari... Un lieu où l'esprit
-                triomphe
-                du glaive. Piltover.</div>
-            <div><strong>Azhari : </strong>Alors fuyons. Laissons derrière nous cette prison de pierre. Devenons ce que
-                nous choisissons d'être.</div>
-            <div><strong>Azhari : </strong>Es-tu prêt à renoncer à tout ? Même à ton nom ?</div>
-            <div><strong>Lysandor : </strong>Je suis prêt à naître de nouveau.</div>
+                n’importe qui ! Enfin tant que nous n’avons pas à faire à Darius </div>
+            <div><strong>Darius : </strong> HALTE VOUS DEUX! ---- te voir dans la partie basse à cette heure est
+                surprenant… J’ai presque l’impression de voir deux jeunes âmes qui fuient Noxus... …Pathétique. </div>
+            <div><strong>Darius : </strong>Dites-moi, pourquoi ne devrais-je pas vous abattre sur-le-champ ?</div>
+            <div><strong>Azhari : </strong>Nous ne fuyons pas, nous partons en mission. Une tâche confiée par un
+                supérieur, hors des frontières.</div>
+            <div><strong>Darius : </strong>Une mission, hein ? Et qui est ce fameux supérieur ?</div>
         </div>
 
         <button id="cta-button" class="cta-button-dialogue invisible-init" onclick="nextDialogue()">Suivant</button>
