@@ -46,10 +46,20 @@ require_once __DIR__ . '/header.html'; ?>
             </div>
             <div><strong>Azhari : </strong> Et si on refuse ?
             </div>
+            <div><strong>Contrebandier : </strong>Alors le nom de Lysandor, deviendra une rumeur. Puis un ordre. Et
+                ensuite… une cible.
+            </div>
+            <div><strong>Lysandor : </strong> On doit choisir entre payer le prix ou la traque.
+            </div>
         </div>
-        <button id="cta-button" class="cta-button-dialogue invisible-init" onclick="nextDialogue()">Suivant</button>
         <div id="dialogueBox"></div>
-
+        <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
+        <form id="choice-form" method="post" action="../chapter3/index.php">
+            <input type="hidden" name="good_answer"
+                value="<?php echo htmlspecialchars($_POST['good_answer'] ?? 'true'); ?>">
+            <button type="submit" name="azhari_is_alive" value="1" class="choice-button">Payer</button>
+            <button type="submit" name="azhari_is_alive" value="0" class="choice-button">Refuser</button>
+        </form>
     </div>
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
 </body>

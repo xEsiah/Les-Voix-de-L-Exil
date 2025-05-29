@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const bodyClass = document.body.classList;
   const chapterClass = bodyClass.toString().match(/background-chapter\d+/);
+  const showFormAtEnd =
+    (chapterClass && chapterClass[0] === "background-chapter2") ||
+    (chapterClass && chapterClass[0] === "background-chapter1");
 
   const chapterMessages = {
     "background-chapter0":
@@ -43,10 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(".sprite")
         .forEach((el) => el.classList.add("fade-in"));
       button.classList.add("fade-in");
-
-      dialogueBox.innerHTML = dialogues[index];
-      index++;
-      setTimeout(highlightSpeakerFromDialogue, 10);
     }, 50);
   });
 
@@ -67,11 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function highlightSpeakerFromDialogue() {
-    // Étape 1 : Appliquer les effets de chapitre selon nombreClick
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter1" &&
-      nombreClick === 2
+      nombreClick === 3
     ) {
       azhari.src = "../images/AzhariShen.png";
       azhari.classList.remove(
@@ -88,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter2" &&
-      nombreClick === 2
+      nombreClick === 3
     ) {
       azhari.src = "../images/AzhariShen.png";
       azhari.classList.remove(
@@ -102,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
       contrebandier.classList.add("reveal");
     }
 
-    // Étape 2 : Mise à jour des classes d'affichage du dialogue
     [azhari, lysandor, darius, contrebandier].forEach((el) => {
       if (el) el.classList.remove("active-speaker");
     });
@@ -113,15 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!strongEl) return;
 
     const speaker = strongEl.textContent.split(":")[0].trim().toLowerCase();
-    console.log("Speaker:", speaker);
 
     if (speaker === "azhari" && azhari) {
       azhari.classList.add("active-speaker");
-      if (azhari.classList.contains("sprite-right-right")) {
-        dialogueBox.classList.add("dialogue-right");
-      } else {
-        dialogueBox.classList.add("dialogue-left");
-      }
+      dialogueBox.classList.add(
+        azhari.classList.contains("sprite-right-right")
+          ? "dialogue-right"
+          : "dialogue-left"
+      );
     } else if (speaker === "lysandor" && lysandor) {
       lysandor.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-right");
@@ -135,40 +131,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function nextDialogue() {
-    nombreClick++; // D'abord incrémenter
-    console.log(nombreClick);
-
     if (index < dialogues.length) {
       dialogueBox.innerHTML = dialogues[index];
-      setTimeout(highlightSpeakerFromDialogue, 10);
+      highlightSpeakerFromDialogue();
+
       index++;
+      nombreClick++;
 
-      if (index === dialogues.length) {
-        button.textContent = "Continuer";
-        button.classList.remove("cta-button-dialogue");
-        button.classList.add("end-button");
-
-        button.onclick = null;
-        button.addEventListener("click", () => {
-          const currentPath = window.location.pathname;
-          const match = currentPath.match(/(chapter)(\d+)/i);
-
-          if (match) {
-            const currentChapNum = parseInt(match[2], 10);
-            const nextChapNum = currentChapNum + 1;
-            const nextChapUrl = currentPath.replace(
-              /chapter\d+/i,
-              `chapter${nextChapNum}`
-            );
-            window.location.href = nextChapUrl;
-          } else {
-            window.location.href =
-              "/Les-Voix-De-L-Exil/public/chapter2/index.php";
-          }
-        });
+      // S'il s'agit d'un chapitre avec formulaire, affiche-le à la fin
+      if (index === dialogues.length && showFormAtEnd) {
+        const form = document.getElementById("choice-form");
+        if (form) {
+          button.style.display = "none";
+          form.style.display = "center";
+          void form.offsetWidth;
+          form.classList.add("fade-in");
+        }
       }
     }
   }
-
-  button.addEventListener("click", nextDialogue);
+  button.addEventListener("click", () => {
+    // S'il reste des dialogues, on continue le scénario
+    if (index < dialogues.length) {
+      nextDialogue();
+    } else if (!showFormAtEnd) {
+      const currentPath = window.location.pathname;
+      const match = currentPath.match(/(chapter)(\d+)/i);
+      if (match) {
+        const currentChapNum = parseInt(match[2], 10);
+        const nextChapNum = currentChapNum + 1;
+        const nextChapUrl = currentPath.replace(
+          /chapter\d+/i,
+          `chapter${nextChapNum}`
+        );
+        window.location.href = nextChapUrl;
+      } else {
+        window.location.href = "/Les-Voix-De-L-Exil/public/chapter2/index.php";
+      }
+    }
+  });
 });

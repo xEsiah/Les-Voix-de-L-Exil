@@ -21,3 +21,7 @@
 .reveal {
   display: flex;
 }
+#choice-form.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}

@@ -27,9 +27,14 @@ require_once __DIR__ . '/header.html'; ?>
                 supérieur, hors des frontières.</div>
             <div><strong>Darius : </strong>Une mission, hein ? Et qui est ce fameux supérieur ?</div>
         </div>
-
-        <button id="cta-button" class="cta-button-dialogue invisible-init" onclick="nextDialogue()">Suivant</button>
         <div id="dialogueBox"></div>
+        <form id="choice-form" method="post" action="../chapter2/index.php">
+            <button type="submit" name="good_answer" value="false" class="choice-button">Rammus</button>
+            <button type="submit" name="good_answer" value="true" class="choice-button">Marcus</button>
+            <button type="submit" name="good_answer" value="false" class="choice-button">Ezreal</button>
+        </form>
+
+        <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
 
     </div>
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
