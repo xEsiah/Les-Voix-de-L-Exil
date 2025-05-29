@@ -53,7 +53,7 @@ require_once __DIR__ . '/header.html'; ?>
             </div>
         </div>
         <div id="dialogueBox"></div>
-        <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
+        <button id="cta-button" class="cta-button-dialogue invisible-init" onclick="nextDialogue()">Suivant</button>
         <form id="choice-form" method="post" action="../chapter3/index.php">
             <input type="hidden" name="good_answer"
                 value="<?php echo htmlspecialchars($_POST['good_answer'] ?? 'true'); ?>">

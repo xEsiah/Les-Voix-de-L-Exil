@@ -79,8 +79,8 @@ require_once __DIR__ . '/header.html'; ?>
             <?php endif; ?>
         </div>
 
-        <!-- Bouton et boîte de dialogue (utilisés par le JS) -->
-        <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
+
+        <button id="cta-button" class="cta-button-dialogue invisible-init" onclick="nextDialogue()">Suivant</button>
         <div id="dialogueBox"></div>
     </div>
 </body>

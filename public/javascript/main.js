@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(".sprite")
         .forEach((el) => el.classList.add("fade-in"));
       button.classList.add("fade-in");
+      nextDialogue();
     }, 50);
   });
 
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter1" &&
-      nombreClick === 3
+      nombreClick === 2
     ) {
       azhari.src = "../images/AzhariShen.png";
       azhari.classList.remove(
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter2" &&
-      nombreClick === 3
+      nombreClick === 2
     ) {
       azhari.src = "../images/AzhariShen.png";
       azhari.classList.remove(
