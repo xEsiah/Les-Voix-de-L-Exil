@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Messages de narration selon le chapitre
   const chapterMessages = {
-    "background-prologue":
-      "Dans les entrailles de Noxus, deux âmes cherchent encore la lumière...",
+    "background-chapter0":
+      "Dans les tribunes sombres de l’arène, l’odeur du sang flotte encore. Azhari et Lysandor avancent, furtifs parmi les chaînes et les ombres.",
     "background-chapter1":
-      "Le soleil se lève sur le Bastion Immortel, une forteresse où les chaînes et la sueur façonnent les destinées.",
+      "Dans les ruelles du Bastion Immortel, Azhari et Lysandor glissent entre les ombres. La garde sommeille. Trop facile...",
     "background-chapter2":
-      "Les Terres Déchirées s'étendent à perte de vue, un désert où règnent les chasseurs de primes et les révoltés.",
+      "Sous le vent sec de Drazhan, les bastions de Noxus s’effacent. Devant eux, un désert rouge murmure les ordres d’un empire qui refuse de les laisser fuir.",
     "background-chapter3":
       "Zaun, l'enfer sous Piltover, où la loi du plus fort est de mise.",
     "background-chapter4":

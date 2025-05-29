@@ -4,7 +4,7 @@
 require_once __DIR__ . '/../../includes/globalHead.html';
 require_once __DIR__ . '/header.html'; ?>
 
-<body class="background-prologue">
+<body class="background-chapter0">
     <div id="narration-box" class="narration-hidden">
         <p id="narration-text"></p>
     </div>
