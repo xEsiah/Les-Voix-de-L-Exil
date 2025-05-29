@@ -10,12 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.getElementById("cta-button");
 
   let index = 0;
+  let nombreClick = 0;
 
-  // Récupère la classe du chapitre active (ex: background-chapter1)
   const bodyClass = document.body.classList;
   const chapterClass = bodyClass.toString().match(/background-chapter\d+/);
 
-  // Messages de narration selon le chapitre
   const chapterMessages = {
     "background-chapter0":
       "Dans les tribunes sombres de l’arène, l’odeur du sang flotte encore. Azhari et Lysandor avancent, furtifs parmi les chaînes et les ombres.",
@@ -29,12 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "Piltover, la cité de la lumière, mais aussi de la discorde.",
   };
 
-  // Texte de narration selon le chapitre, ou texte par défaut
   const narrationText =
     chapterMessages[chapterClass ? chapterClass[0] : "default"] ||
     "Dans un monde de ténèbres, la lumière n'est jamais loin...";
 
-  // Affiche la narration puis initialise l'affichage des dialogues et sprites
   showNarration(narrationText, 4000, () => {
     document
       .querySelectorAll(".sprite")
@@ -53,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 50);
   });
 
-  // Affiche la narration dans la boîte correspondante
   function showNarration(text, duration = 3000, callback = null) {
     const box = document.getElementById("narration-box");
     const textElement = document.getElementById("narration-text");
@@ -70,8 +66,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }, duration);
   }
 
-  // Met en surbrillance le locuteur actif selon le dialogue
   function highlightSpeakerFromDialogue() {
+    // Étape 1 : Appliquer les effets de chapitre selon nombreClick
+    if (
+      chapterClass &&
+      chapterClass[0] === "background-chapter1" &&
+      nombreClick === 2
+    ) {
+      azhari.src = "../images/AzhariShen.png";
+      azhari.classList.remove(
+        "sprite-left",
+        "sprite-right",
+        "sprite-right-right"
+      );
+      azhari.classList.add("sprite-right-right");
+
+      darius.classList.remove("hidden");
+      darius.classList.add("reveal");
+    }
+
+    if (
+      chapterClass &&
+      chapterClass[0] === "background-chapter2" &&
+      nombreClick === 2
+    ) {
+      azhari.src = "../images/AzhariShen.png";
+      azhari.classList.remove(
+        "sprite-left",
+        "sprite-right",
+        "sprite-right-right"
+      );
+      azhari.classList.add("sprite-right-right");
+
+      contrebandier.classList.remove("hidden");
+      contrebandier.classList.add("reveal");
+    }
+
+    // Étape 2 : Mise à jour des classes d'affichage du dialogue
     [azhari, lysandor, darius, contrebandier].forEach((el) => {
       if (el) el.classList.remove("active-speaker");
     });
@@ -82,59 +113,34 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!strongEl) return;
 
     const speaker = strongEl.textContent.split(":")[0].trim().toLowerCase();
+    console.log("Speaker:", speaker);
 
     if (speaker === "azhari" && azhari) {
       azhari.classList.add("active-speaker");
-      dialogueBox.classList.add("dialogue-left");
+      if (azhari.classList.contains("sprite-right-right")) {
+        dialogueBox.classList.add("dialogue-right");
+      } else {
+        dialogueBox.classList.add("dialogue-left");
+      }
     } else if (speaker === "lysandor" && lysandor) {
       lysandor.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-right");
-    } else if (speaker === "darius") {
+    } else if (speaker === "darius" && darius) {
       darius.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-left");
     } else if (speaker === "contrebandier" && contrebandier) {
       contrebandier.classList.add("active-speaker");
       dialogueBox.classList.add("dialogue-left");
     }
-    if (
-      // Apparaition de Darius et changement de côté de Azhari
-      chapterClass &&
-      chapterClass[0] === "background-chapter1" &&
-      nombreClick === 2
-    ) {
-      azhari.src = "../images/AzhariShen.png";
-      // Supprimer la classe `sprite-left`
-      azhari.classList.remove("sprite-left");
-      // Afficher Darius
-      darius.classList.remove("hidden");
-      darius.classList.add("reveal");
-      // Ajouter `sprite-right`
-      azhari.classList.add("sprite-right-right");
-    }
-    if (
-      // Apparaition de Darius et changement de côté de Azhari
-      chapterClass &&
-      chapterClass[0] === "background-chapter2" &&
-      nombreClick === 3
-    ) {
-      azhari.src = "../images/AzhariShen.png";
-      // Supprimer la classe `sprite-left`
-      azhari.classList.remove("sprite-left");
-      // Afficher Darius
-      contrebandier.classList.remove("hidden");
-      contrebandier.classList.add("reveal");
-      // Ajouter `sprite-right`
-      azhari.classList.add("sprite-right-right");
-    }
   }
 
-  // Affiche le dialogue suivant ou redirige à la fin
   function nextDialogue() {
-    nombreClick++;
+    nombreClick++; // D'abord incrémenter
     console.log(nombreClick);
+
     if (index < dialogues.length) {
       dialogueBox.innerHTML = dialogues[index];
-      highlightSpeakerFromDialogue();
+      setTimeout(highlightSpeakerFromDialogue, 10);
       index++;
 
       if (index === dialogues.length) {
@@ -164,6 +170,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  let nombreClick = 0;
   button.addEventListener("click", nextDialogue);
 });
