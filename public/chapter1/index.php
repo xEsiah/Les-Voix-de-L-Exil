@@ -20,7 +20,7 @@ require_once __DIR__ . '/header.html'; ?>
                 d’éveiller les soupçons non ?</div>
             <div><strong>Lysandor : </strong> Effectivement mais avec ma réputation on devrait pouvoir se justifier à
                 n’importe qui ! Enfin tant que nous n’avons pas à faire à Darius </div>
-            <div><strong>Darius : </strong> HALTE VOUS DEUX! ---- te voir dans la partie basse à cette heure est
+            <div><strong>Darius : </strong> HALTE VOUS DEUX! Lysandor te voir dans la partie basse à cette heure est
                 surprenant… J’ai presque l’impression de voir deux jeunes âmes qui fuient Noxus... …Pathétique. </div>
             <div><strong>Darius : </strong>Dites-moi, pourquoi ne devrais-je pas vous abattre sur-le-champ ?</div>
             <div><strong>Azhari : </strong>Nous ne fuyons pas, nous partons en mission. Une tâche confiée par un
