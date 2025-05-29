@@ -109,7 +109,22 @@ document.addEventListener("DOMContentLoaded", () => {
       darius.classList.remove("hidden");
       darius.classList.add("reveal");
       // Ajouter `sprite-right`
-      azhari.classList.add("sprite-right");
+      azhari.classList.add("sprite-right-right");
+    }
+    if (
+      // Apparaition de Darius et changement de côté de Azhari
+      chapterClass &&
+      chapterClass[0] === "background-chapter2" &&
+      nombreClick === 3
+    ) {
+      azhari.src = "../images/AzhariShen.png";
+      // Supprimer la classe `sprite-left`
+      azhari.classList.remove("sprite-left");
+      // Afficher Darius
+      contrebandier.classList.remove("hidden");
+      contrebandier.classList.add("reveal");
+      // Ajouter `sprite-right`
+      azhari.classList.add("sprite-right-right");
     }
   }
 
