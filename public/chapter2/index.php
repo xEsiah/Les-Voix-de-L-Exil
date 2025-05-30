@@ -1,10 +1,20 @@
+<?php
+session_start();
+
+// Bloque l'accès si la variable de session n'existe pas
+if (!isset($_SESSION['good_answer'])) {
+    header('Location: ../index.php');
+    exit;
+}
+
+$good_answer = $_SESSION['good_answer'];
+?>
+
 <!DOCTYPE html>
 <html>
 <?php
 require_once __DIR__ . '/../../includes/globalHead.html';
 require_once __DIR__ . '/header.html';
-
-$good_answer = $_GET['good_answer'] ?? 'true';
 ?>
 
 <body class="background-chapter2">

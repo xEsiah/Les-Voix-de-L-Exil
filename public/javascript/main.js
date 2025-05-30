@@ -20,11 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const chapterMessages = {
     "background-chapter0":
-      "Dans les tribunes sombres de l’arène, l’odeur du sang flotte encore. Azhari et Lysandor avancent, furtifs parmi les chaînes et les ombres.",
-    "background-chapter1":
-      "Dans les ruelles du Bastion Immortel, Azhari et Lysandor glissent entre les ombres. La garde sommeille. Trop facile...",
+      "Dans les tribunes sombres de l’arène, l’odeur du sang flotte encore...",
+    "background-chapter1": (() => {
+      if (typeof goodAnswer !== "undefined") {
+        if (goodAnswer === "true") {
+          return "Darius semble surpris par cette réponse. Marcus est une figure respectée. Peut-être que cela les sauvera…";
+        } else {
+          return "Le regard de Darius se durcit. Il ne semble pas croire un mot de leur justification. La fuite devient inévitable.";
+        }
+      }
+      return "Dans les ruelles du Bastion Immortel, Azhari et Lysandor glissent entre les ombres. La garde sommeille. Trop facile...";
+    })(),
     "background-chapter2":
-      "Sous le vent sec de Drazhan, les bastions de Noxus s’effacent. Devant eux, un désert rouge murmure les ordres d’un empire qui refuse de les laisser fuir.",
+      "Sous le vent sec de Drazhan, la capitale de Noxus s’efface. Devant eux, une plaine désertique... et derrière, un empire qu’ils ont défié refusant de les laisser fuir.",
     "background-chapter3":
       "Zaun, l'enfer sous Piltover, où la loi du plus fort est de mise.",
     "background-chapter4":
@@ -146,15 +154,23 @@ document.addEventListener("DOMContentLoaded", () => {
           form.style.display = "center";
           void form.offsetWidth;
           form.classList.add("fade-in");
-        } else {
-          button.textContent = goodAnswer === "Marcus" ? "Continuer" : "Fuir…";
-
-          button.onclick = () => {
-            window.location.href = `../chapter2/index.php?good_answer=${encodeURIComponent(
-              goodAnswer
-            )}`;
-          };
         }
+        button.textContent = goodAnswer === "true" ? "S'échapper !" : "Fuir…";
+
+        button.onclick = () => {
+          const form = document.createElement("form");
+          form.method = "POST";
+          form.action = "../chapter2/index.php";
+
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = "good_answer";
+          input.value = goodAnswer;
+          form.appendChild(input);
+
+          document.body.appendChild(form);
+          form.submit();
+        };
       }
     }
   }

@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Vérifie si le formulaire a bien été soumis avec 'good_answer'
+if (!isset($_POST['good_answer'])) {
+    header('Location: ../index.php');
+    exit;
+}
+
+$reponse = $_POST['good_answer'];
+$good_answer = ($reponse === 'Marcus') ? 'true' : 'false';
+$_SESSION['good_answer'] = $good_answer;
+?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -14,11 +27,6 @@ require_once __DIR__ . '/header.html';
         <img src="../images/AzhariShen.png" alt="Azhari" class="sprite sprite-right-right invisible-init" id="azhari" />
         <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right invisible-init"
             id="lysandor" />
-
-        <?php
-        $reponse = $_POST['good_answer'] ?? '';
-        $good_answer = ($reponse === 'Marcus') ? 'true' : 'false';
-        ?>
 
         <div class="dialogues">
             <?php if ($reponse === 'Marcus'): ?>
@@ -41,9 +49,16 @@ require_once __DIR__ . '/header.html';
                 <div><strong>Darius : </strong>Je ne comprends pas ce que vous mijotez, mais ça ne me plaît pas.</div>
             <?php endif; ?>
         </div>
+
         <div id="dialogueBox"></div>
         <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
+
+        <!-- Pas besoin de transmettre good_answer : c'est stocké en session -->
+        <form method="post" action="../chapter2/index.php">
+            <button type="submit" class="cta-button-dialogue">Continuer vers le chapitre 2</button>
+        </form>
     </div>
+
     <script>
         const goodAnswer = <?= json_encode($good_answer) ?>;
     </script>
