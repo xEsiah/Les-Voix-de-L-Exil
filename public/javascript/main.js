@@ -229,8 +229,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const form = document.createElement("form");
           form.method = "POST";
 
-          if (window.location.pathname.includes("chapter3/index.php")) {
-            form.action = "../chapter3/answer.php";
+          if (window.location.pathname.includes("chapter3/answer.php")) {
+            form.action = "../chapter4/index.php";
           } else {
             form.action = "../chapter2/index.php";
           }
