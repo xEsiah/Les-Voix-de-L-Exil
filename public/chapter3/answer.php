@@ -106,16 +106,24 @@ require_once __DIR__ . '/header.html';
 
         <div id="dialogueBox"></div>
         <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
+        <?php if (!$azhariAlive): ?>
+            <form id="choice-form" method="post" action="../chapter4/index.php" style="display:none;">
+                <input type="hidden" name="azhariAlive" value="false">
+                <button type="submit" name="nikas_offer" value="accept" class="choice-button">Rester à Zaun avec
+                    Nika</button>
+                <button type="submit" name="nikas_offer" value="refuse" class="choice-button">Honorer Azhari et aller à
+                    Piltover</button>
+            </form>
+        <?php endif; ?>
     </div>
     <script>
         const nikasOffer = <?= json_encode($nikas_offer) ?>;
         const azhariAlive = <?= json_encode($azhariAlive) ?>;
+        const goodAnswer = <?php echo json_encode($good_answer === 'true'); ?>;
     </script>
 
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
-    <script>
-        const goodAnswer = <?php echo json_encode($good_answer === 'true'); ?>;
-    </script>
+
 </body>
 
 </html>

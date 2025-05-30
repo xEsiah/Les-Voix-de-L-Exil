@@ -76,7 +76,6 @@ require_once __DIR__ . '/header.html';
             </form>
         <?php endif; ?>
     </div>
-
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
     <script>
         const goodAnswer = <?php echo json_encode($good_answer === 'true'); ?>;

@@ -223,16 +223,25 @@ document.addEventListener("DOMContentLoaded", () => {
           form.style.display = "block";
         }
 
-        button.textContent = goodAnswer === true ? "S'échapper !" : "Fuir…";
+        // Texte du bouton uniquement pour chapitre 1
+        if (window.location.pathname.includes("chapter1/answer.php")) {
+          button.textContent = goodAnswer === true ? "S'échapper !" : "Fuir…";
+        }
 
         button.onclick = () => {
           const form = document.createElement("form");
           form.method = "POST";
 
-          if (window.location.pathname.includes("chapter3/answer.php")) {
+          const currentPath = window.location.pathname;
+
+          if (currentPath.includes("chapter3/index.php")) {
+            form.action = "../chapter3/answer.php";
+          } else if (currentPath.includes("chapter3/answer.php")) {
             form.action = "../chapter4/index.php";
-          } else {
+          } else if (currentPath.includes("chapter1/answer.php")) {
             form.action = "../chapter2/index.php";
+          } else {
+            form.action = "./";
           }
 
           const inputGoodAnswer = document.createElement("input");
