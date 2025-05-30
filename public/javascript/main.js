@@ -207,6 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (form) {
           form.classList.add("visible", "fade-in");
           button.style.display = "none";
+          form.style.display = "block";
         }
         button.textContent = goodAnswer === true ? "S'échapper !" : "Fuir…";
         button.onclick = () => {

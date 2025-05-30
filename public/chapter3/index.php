@@ -46,7 +46,7 @@ require_once __DIR__ . '/header.html';
         <?php endif; ?>
         <div class="dialogues">
             <?php if ($azhariAlive): ?>
-                <div><strong>Azhari : </strong> Ce n’est pas une ville. C’est une fièvre.</div>
+                <div><strong>Azhari : </strong> Ce n’est pas une ville. C’est une décharge.</div>
                 <div><strong>Lysandor : </strong> Mais c’est la seule route vers Piltover. Et on aura besoin d’un guide. On
                     est des étrangers ici… et ça se voit.</div>
                 <div><strong>Nika : </strong> Deux types paumés, qui évitent les regards et marchent droit dans le
