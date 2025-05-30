@@ -6,6 +6,7 @@ if (!isset($_POST['nikas_offer']) || !in_array($_POST['nikas_offer'], ['accept',
     header('Location: ../index.php');
     exit;
 }
+$good_answer = $_SESSION['good_answer'];
 $nikas_offer = $_POST['nikas_offer'];
 $_SESSION['nikas_offer'] = $nikas_offer;
 
@@ -49,13 +50,14 @@ require_once __DIR__ . '/header.html';
             <?php
             if ($azhariAlive) {
                 if ($nikas_offer === 'accept') { ?>
-                    <div><strong>Nika : </strong> Parfait, vous avez accepté mon marché. Vous allez en suer.</div>
-                    <div class="cri"><strong>Lysandor : </strong> Tant qu'on rejoint bientôt Piltover ça nous va !</div>
+                    <div><strong>Nika : </strong> Vraiment, vous avez accepté mon marché?! Vous allez en suer!</div>
+                    <div><strong>Lysandor : </strong> Tant qu'on rejoint bientôt Piltover ça nous va !</div>
+                    <div><strong>Azhari : </strong> J'ai hâte d'atteindre cette nouvelle vie !</div>
                 <?php } else { ?>
-                    <div class="murmure"><strong>Azhari : </strong> Je ne sais pas si on peut lui faire confiance...</div>
-                    <div class="murmure"><strong>Lysandor : </strong> On peut essayer de se débrouiller par nous-mêmes tu as
+                    <div><strong>Azhari : </strong> Je ne sais pas si on peut lui faire confiance...</div>
+                    <div><strong>Lysandor : </strong> On peut essayer de se débrouiller par nous-mêmes tu as
                         raison !</div>
-                    <div><strong>Nika : </strong> Vous refusez mon aide, vous faites une grave erreur.</div>
+                    <div><strong>Nika : </strong> Vraiment vous refusez mon aide?! Vous faites une grave erreur.</div>
                 <?php }
             } ?>
         </div>
@@ -69,6 +71,9 @@ require_once __DIR__ . '/header.html';
     </script>
 
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
+    <script>
+        const goodAnswer = <?php echo json_encode($good_answer === 'true'); ?>;
+    </script>
 </body>
 
 </html>

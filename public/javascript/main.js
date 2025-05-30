@@ -123,12 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    console.log(window.location.pathname); // Ajoute cette ligne avant la condition pour voir le chemin exact
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter3" &&
-      nombreClick === clickTrigger
+      nombreClick === clickTrigger &&
+      window.location.pathname.includes("chapter3/index.php") && // Vérifie que l'URL contient "index.php"
+      !window.location.pathname.includes("chapter3/answer.php") // Assure-toi de ne pas être sur "answer.php"
     ) {
       if (azhariAlive) {
+        console.log(window.location.pathname);
         // scénario où Azhari est vivant
         lysandor.src = "../images/LysandorDuCouteau.png";
         lysandor.classList.remove(
@@ -159,7 +163,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // Liste des personnages connus
     const characters = {
       azhari,
       lysandor,
