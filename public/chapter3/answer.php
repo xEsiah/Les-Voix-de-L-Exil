@@ -105,7 +105,7 @@ require_once __DIR__ . '/header.html';
         <div id="dialogueBox"></div>
         <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
         <?php if (!$azhariAlive): ?>
-            <form id="choice-form" method="post" action="../chapter4/index.php" style="display:none;">
+            <form id="choice-form" method="post" action="../chapter4/index.php">
                 <input type="hidden" name="azhariAlive" value="false">
                 <button type="submit" name="nikas_offer" value="accept" class="choice-button">Rester à Zaun avec
                     Nika</button>

@@ -1,15 +1,27 @@
 <?php
 session_start();
 
-// Récupération sécurisée des variables depuis la session
-$azhariAlive = isset($_SESSION['azhariAlive']) ? filter_var($_SESSION['azhariAlive'], FILTER_VALIDATE_BOOLEAN) : false;
-$nikas_offer = $_SESSION['nikas_offer'] ?? null;
+// Met à jour les variables à partir de POST ou session
+if (isset($_POST['azhariAlive'])) {
+    $azhariAlive = filter_var($_POST['azhariAlive'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    $_SESSION['azhariAlive'] = $azhariAlive;
+} elseif (isset($_SESSION['azhariAlive'])) {
+    $azhariAlive = $_SESSION['azhariAlive'];
+} else {
+    $azhariAlive = false;
+}
 
-// Redirection si aucune décision n’a été prise
-if (!in_array($nikas_offer, ['accept', 'refuse'], true)) {
+if (isset($_POST['nikas_offer']) && in_array($_POST['nikas_offer'], ['accept', 'refuse'], true)) {
+    $nikas_offer = $_POST['nikas_offer'];
+    $_SESSION['nikas_offer'] = $nikas_offer;
+} elseif (isset($_SESSION['nikas_offer'])) {
+    $nikas_offer = $_SESSION['nikas_offer'];
+} else {
+    // Pas de valeur valide -> redirection
     header('Location: ../chapter3/index.php');
     exit;
 }
+
 
 ?>
 <!DOCTYPE html>

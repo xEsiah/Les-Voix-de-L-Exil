@@ -51,8 +51,6 @@ require_once __DIR__ . '/header.html';
 
         <div id="dialogueBox"></div>
         <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
-
-        <!-- Pas besoin de transmettre good_answer : c'est stocké en session -->
         <form method="post" action="../chapter2/index.php">
             <button type="submit" class="cta-button-dialogue">Continuer vers le chapitre 2</button>
         </form>

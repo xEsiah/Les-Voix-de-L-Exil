@@ -223,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
           form.style.display = "block";
         }
 
-        // Texte du bouton uniquement pour chapitre 1
         if (window.location.pathname.includes("chapter1/answer.php")) {
           button.textContent = goodAnswer === true ? "S'échapper !" : "Fuir…";
         }
