@@ -21,6 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
     (chapterClass && chapterClass[0] === "background-chapter2") ||
     (chapterClass && chapterClass[0] === "background-chapter1");
 
+  let clickTrigger = 2;
+  if (chapterClass && chapterClass[0] === "background-chapter3") {
+    if (window.location.pathname.includes("chapter3/answer.php")) {
+      clickTrigger = azhariAlive ? Infinity : 19;
+    } else {
+      clickTrigger = azhariAlive ? 2 : 1;
+    }
+  }
+
   const chapterMessages = {
     "background-chapter0":
       "Dans les tribunes sombres de l’arène, l’odeur du sang flotte encore...",
@@ -79,11 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function highlightSpeakerFromDialogue() {
-    let clickTrigger = 2;
-    if (chapterClass && chapterClass[0] === "background-chapter3") {
-      clickTrigger = azhariAlive ? 2 : 1;
-    }
-
     // Révélations selon chapitre et clic
     if (
       chapterClass &&
@@ -123,17 +127,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    console.log(window.location.pathname); // Ajoute cette ligne avant la condition pour voir le chemin exact
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter3" &&
-      nombreClick === clickTrigger &&
-      window.location.pathname.includes("chapter3/index.php") && // Vérifie que l'URL contient "index.php"
-      !window.location.pathname.includes("chapter3/answer.php") // Assure-toi de ne pas être sur "answer.php"
+      nombreClick === clickTrigger
     ) {
+      const isAnswerPage = window.location.pathname.includes(
+        "chapter3/answer.php"
+      );
+
       if (azhariAlive) {
-        console.log(window.location.pathname);
-        // scénario où Azhari est vivant
         lysandor.src = "../images/LysandorDuCouteau.png";
         lysandor.classList.remove(
           "sprite-left",
@@ -147,7 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
           nika.classList.add("reveal");
         }
       } else {
-        // scénario où Azhari est mort
         lysandor.src = "../images/LysandorDuCouteauReversed.png";
         lysandor.classList.remove(
           "sprite-right",
@@ -159,6 +161,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (teeva) {
           teeva.classList.remove("hidden");
           teeva.classList.add("reveal");
+        }
+
+        if (isAnswerPage && nika) {
+          nika.classList.remove("hidden");
+          nika.classList.add("reveal");
+          teeva.classList.remove(
+            "sprite-left",
+            "sprite-right",
+            "sprite-right-right"
+          );
+          teeva.classList.add("sprite-right-right");
         }
       }
     }
@@ -172,13 +185,11 @@ document.addEventListener("DOMContentLoaded", () => {
       teeva,
     };
 
-    // Réinitialisation des états
     Object.values(characters).forEach((el) => {
       if (el) el.classList.remove("active-speaker");
     });
     dialogueBox.classList.remove("dialogue-left", "dialogue-right");
 
-    // Détection du locuteur courant
     const strongEl = dialogueBox.querySelector("strong");
     if (!strongEl) return;
 
@@ -204,7 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
       index++;
       nombreClick++;
 
-      // Une fois les dialogues terminés, on affiche le formulaire
       if (index === dialogues.length && showFormAtEnd) {
         const form = document.getElementById("choice-form");
         if (form) {
@@ -212,17 +222,30 @@ document.addEventListener("DOMContentLoaded", () => {
           button.style.display = "none";
           form.style.display = "block";
         }
+
         button.textContent = goodAnswer === true ? "S'échapper !" : "Fuir…";
+
         button.onclick = () => {
           const form = document.createElement("form");
           form.method = "POST";
-          form.action = "../chapter2/index.php";
 
-          const input = document.createElement("input");
-          input.type = "hidden";
-          input.name = "good_answer";
-          input.value = goodAnswer;
-          form.appendChild(input);
+          if (window.location.pathname.includes("chapter3/index.php")) {
+            form.action = "../chapter3/answer.php";
+          } else {
+            form.action = "../chapter2/index.php";
+          }
+
+          const inputGoodAnswer = document.createElement("input");
+          inputGoodAnswer.type = "hidden";
+          inputGoodAnswer.name = "good_answer";
+          inputGoodAnswer.value = goodAnswer;
+          form.appendChild(inputGoodAnswer);
+
+          const inputNikas = document.createElement("input");
+          inputNikas.type = "hidden";
+          inputNikas.name = "nikas_offer";
+          inputNikas.value = "";
+          form.appendChild(inputNikas);
 
           document.body.appendChild(form);
           form.submit();
@@ -232,7 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   button.addEventListener("click", () => {
-    // S'il reste des dialogues, on continue le scénario
     if (index < dialogues.length) {
       nextDialogue();
     } else if (!showFormAtEnd) {

@@ -56,11 +56,11 @@ require_once __DIR__ . '/header.html';
                     ou en loyauté. Mais j’ai mes raccourcis. Et mes dettes. Si vous m’aidez, je vous guide.</div>
             <?php else: ?>
                 <div><strong>Lysandor : </strong> Azhari… Tu disais qu’on forge notre propre destin. Moi, je me suis forgé
-                    un enfer.</div>
-                <div><strong>Teeva : </strong> Eh toi! T’as une tête de fuyard, mon garçon. Tu veux monter là-haut n'est-ce
+                    un enfer sans toi...</div>
+                <div><strong>Teeva : </strong> Eh mon garçon! T’as une tête de fuyard toi. Tu veux monter là-haut n'est-ce
                     pas ?</div>
                 <div><strong>Teeva : </strong> Il te faudra un guide. Et un nom propre.</div>
-                <div><strong>Lysandor : </strong> Oui s'il vous plaît je paierai. En services ou en secrets.</div>
+                <div><strong>Lysandor : </strong> Oui s'il vous plaît je paierai... En services s'il le faut...</div>
                 <div><strong>Teeva : </strong> Alors suis-moi. Et oublie qui tu étais.</div>
             <?php endif; ?>
         </div>
