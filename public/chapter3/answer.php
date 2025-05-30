@@ -23,8 +23,6 @@ if (isset($_POST['azhariAlive'])) {
     $azhariAlive = false;
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <?php
@@ -123,7 +121,6 @@ require_once __DIR__ . '/header.html';
     </script>
 
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
-
 </body>
 
 </html>
