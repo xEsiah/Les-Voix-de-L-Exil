@@ -1,14 +1,13 @@
 <?php
 session_start();
 
-// Vérifie si le formulaire a bien été soumis avec 'good_answer'
 if (!isset($_POST['good_answer'])) {
     header('Location: ../index.php');
     exit;
 }
 
 $reponse = $_POST['good_answer'];
-$good_answer = ($reponse === 'Marcus') ? 'true' : 'false';
+$good_answer = ($reponse === 'Marcus');
 $_SESSION['good_answer'] = $good_answer;
 ?>
 <!DOCTYPE html>

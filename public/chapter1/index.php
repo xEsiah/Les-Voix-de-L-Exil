@@ -38,6 +38,7 @@ require_once __DIR__ . '/header.html'; ?>
         <button id="cta-button" class="cta-button-dialogue invisible-init">Suivant</button>
 
     </div>
+
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
 </body>
 

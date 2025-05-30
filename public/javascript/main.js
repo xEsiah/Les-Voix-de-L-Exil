@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dialogueElements = document.querySelectorAll(".dialogues div");
-  const dialogues = Array.from(dialogueElements).map((el) => el.outerHTML);
+  const dialogues = Array.from(dialogueElements).map((el) => el.innerHTML);
 
   const azhari = document.getElementById("azhari");
   const lysandor = document.getElementById("lysandor");
   const darius = document.getElementById("darius");
   const contrebandier = document.getElementById("contrebandier");
+  const nika = document.getElementById("nika");
+  const teeva = document.getElementById("teeva");
   const dialogueBox = document.getElementById("dialogueBox");
   const button = document.getElementById("cta-button");
 
@@ -15,15 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const bodyClass = document.body.classList;
   const chapterClass = bodyClass.toString().match(/background-chapter\d+/);
   const showFormAtEnd =
+    (chapterClass && chapterClass[0] === "background-chapter3") ||
     (chapterClass && chapterClass[0] === "background-chapter2") ||
     (chapterClass && chapterClass[0] === "background-chapter1");
 
   const chapterMessages = {
     "background-chapter0":
       "Dans les tribunes sombres de l’arène, l’odeur du sang flotte encore...",
+
     "background-chapter1": (() => {
       if (typeof goodAnswer !== "undefined") {
-        if (goodAnswer === "true") {
+        if (goodAnswer === true) {
           return "Darius semble surpris par cette réponse. Marcus est une figure respectée. Peut-être que cela les sauvera…";
         } else {
           return "Le regard de Darius se durcit. Il ne semble pas croire un mot de leur justification. La fuite devient inévitable.";
@@ -43,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     chapterMessages[chapterClass ? chapterClass[0] : "default"] ||
     "Dans un monde de ténèbres, la lumière n'est jamais loin...";
 
-  showNarration(narrationText, 4000, () => {
+  showNarration(narrationText, 500, () => {
     document
       .querySelectorAll(".sprite")
       .forEach((el) => el.classList.remove("invisible-init"));
@@ -58,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 50);
   });
 
-  function showNarration(text, duration = 3000, callback = null) {
+  function showNarration(text, duration = 500, callback = null) {
     const box = document.getElementById("narration-box");
     const textElement = document.getElementById("narration-text");
 
@@ -75,10 +79,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function highlightSpeakerFromDialogue() {
+    let clickTrigger = 2;
+    if (chapterClass && chapterClass[0] === "background-chapter3") {
+      clickTrigger = azhariAlive ? 2 : 1;
+    }
+
+    // Révélations selon chapitre et clic
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter1" &&
-      nombreClick === 2
+      nombreClick === clickTrigger
     ) {
       azhari.src = "../images/AzhariShen.png";
       azhari.classList.remove(
@@ -88,14 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       azhari.classList.add("sprite-right-right");
 
-      darius.classList.remove("hidden");
-      darius.classList.add("reveal");
+      if (darius) {
+        darius.classList.remove("hidden");
+        darius.classList.add("reveal");
+      }
     }
 
     if (
       chapterClass &&
       chapterClass[0] === "background-chapter2" &&
-      nombreClick === 2
+      nombreClick === clickTrigger
     ) {
       azhari.src = "../images/AzhariShen.png";
       azhari.classList.remove(
@@ -105,37 +117,79 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       azhari.classList.add("sprite-right-right");
 
-      contrebandier.classList.remove("hidden");
-      contrebandier.classList.add("reveal");
+      if (contrebandier) {
+        contrebandier.classList.remove("hidden");
+        contrebandier.classList.add("reveal");
+      }
     }
 
-    [azhari, lysandor, darius, contrebandier].forEach((el) => {
+    if (
+      chapterClass &&
+      chapterClass[0] === "background-chapter3" &&
+      nombreClick === clickTrigger
+    ) {
+      if (azhariAlive) {
+        // scénario où Azhari est vivant
+        lysandor.src = "../images/LysandorDuCouteau.png";
+        lysandor.classList.remove(
+          "sprite-left",
+          "sprite-right",
+          "sprite-right-right"
+        );
+        lysandor.classList.add("sprite-right-right");
+
+        if (nika) {
+          nika.classList.remove("hidden");
+          nika.classList.add("reveal");
+        }
+      } else {
+        // scénario où Azhari est mort
+        lysandor.src = "../images/LysandorDuCouteauReversed.png";
+        lysandor.classList.remove(
+          "sprite-right",
+          "sprite-left",
+          "sprite-right-right"
+        );
+        lysandor.classList.add("sprite-left");
+
+        if (teeva) {
+          teeva.classList.remove("hidden");
+          teeva.classList.add("reveal");
+        }
+      }
+    }
+
+    // Liste des personnages connus
+    const characters = {
+      azhari,
+      lysandor,
+      darius,
+      contrebandier,
+      nika,
+      teeva,
+    };
+
+    // Réinitialisation des états
+    Object.values(characters).forEach((el) => {
       if (el) el.classList.remove("active-speaker");
     });
-    if (dialogueBox)
-      dialogueBox.classList.remove("dialogue-left", "dialogue-right");
+    dialogueBox.classList.remove("dialogue-left", "dialogue-right");
 
+    // Détection du locuteur courant
     const strongEl = dialogueBox.querySelector("strong");
     if (!strongEl) return;
 
     const speaker = strongEl.textContent.split(":")[0].trim().toLowerCase();
+    const characterEl = characters[speaker];
 
-    if (speaker === "azhari" && azhari) {
-      azhari.classList.add("active-speaker");
-      dialogueBox.classList.add(
-        azhari.classList.contains("sprite-right-right")
-          ? "dialogue-right"
-          : "dialogue-left"
-      );
-    } else if (speaker === "lysandor" && lysandor) {
-      lysandor.classList.add("active-speaker");
-      dialogueBox.classList.add("dialogue-right");
-    } else if (speaker === "darius" && darius) {
-      darius.classList.add("active-speaker");
-      dialogueBox.classList.add("dialogue-left");
-    } else if (speaker === "contrebandier" && contrebandier) {
-      contrebandier.classList.add("active-speaker");
-      dialogueBox.classList.add("dialogue-left");
+    if (characterEl) {
+      characterEl.classList.add("active-speaker");
+
+      const isRight =
+        characterEl.classList.contains("sprite-right") ||
+        characterEl.classList.contains("sprite-right-right");
+
+      dialogueBox.classList.add(isRight ? "dialogue-right" : "dialogue-left");
     }
   }
 
@@ -147,16 +201,14 @@ document.addEventListener("DOMContentLoaded", () => {
       index++;
       nombreClick++;
 
+      // Une fois les dialogues terminés, on affiche le formulaire
       if (index === dialogues.length && showFormAtEnd) {
         const form = document.getElementById("choice-form");
         if (form) {
+          form.classList.add("visible", "fade-in");
           button.style.display = "none";
-          form.style.display = "center";
-          void form.offsetWidth;
-          form.classList.add("fade-in");
         }
-        button.textContent = goodAnswer === "true" ? "S'échapper !" : "Fuir…";
-
+        button.textContent = goodAnswer === true ? "S'échapper !" : "Fuir…";
         button.onclick = () => {
           const form = document.createElement("form");
           form.method = "POST";

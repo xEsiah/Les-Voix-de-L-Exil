@@ -60,12 +60,16 @@ require_once __DIR__ . '/header.html';
 
         <form id="choice-form" method="post" action="../chapter3/index.php">
             <input type="hidden" name="good_answer" value="<?php echo htmlspecialchars($good_answer); ?>">
-            <button type="submit" name="azhari_is_alive" value="1" class="choice-button">Payer</button>
-            <button type="submit" name="azhari_is_alive" value="0" class="choice-button">Refuser</button>
+            <button type="submit" name="paid" value="true" class="choice-button">Payer</button>
+            <button type="submit" name="paid" value="false" class="choice-button">Refuser</button>
         </form>
     </div>
 
     <?php require_once __DIR__ . '/../../includes/footer.html'; ?>
+    <script>
+        const goodAnswer = <?php echo json_encode($good_answer === 'true'); ?>;
+    </script>
+
 </body>
 
 </html>
