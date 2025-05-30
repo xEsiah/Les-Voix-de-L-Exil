@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dialogueElements = document.querySelectorAll(".dialogues div");
-  const dialogues = Array.from(dialogueElements).map((el) => el.innerHTML);
+  const dialogues = Array.from(dialogueElements).map((el) => el.outerHTML);
 
   const azhari = document.getElementById("azhari");
   const lysandor = document.getElementById("lysandor");
@@ -139,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
       index++;
       nombreClick++;
 
-      // S'il s'agit d'un chapitre avec formulaire, affiche-le à la fin
       if (index === dialogues.length && showFormAtEnd) {
         const form = document.getElementById("choice-form");
         if (form) {
@@ -147,10 +146,19 @@ document.addEventListener("DOMContentLoaded", () => {
           form.style.display = "center";
           void form.offsetWidth;
           form.classList.add("fade-in");
+        } else {
+          button.textContent = goodAnswer === "Marcus" ? "Continuer" : "Fuir…";
+
+          button.onclick = () => {
+            window.location.href = `../chapter2/index.php?good_answer=${encodeURIComponent(
+              goodAnswer
+            )}`;
+          };
         }
       }
     }
   }
+
   button.addEventListener("click", () => {
     // S'il reste des dialogues, on continue le scénario
     if (index < dialogues.length) {
