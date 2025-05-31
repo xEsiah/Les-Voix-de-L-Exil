@@ -21,18 +21,15 @@ if (isset($_POST['nikas_offer']) && in_array($_POST['nikas_offer'], ['accept', '
     header('Location: ../chapter3/index.php');
     exit;
 }
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <?php
-require_once __DIR__ . '/../../includes/globalHead.html';
-require_once __DIR__ . '/header.html';
-?>
-
+require_once __DIR__ . '/../../includes/globalHead.html'; ?>
 
 <body class="background-chapter4">
+    <?php require_once __DIR__ . '/header.html'; ?>
     <div id="narration-box" class="narration-hidden">
         <div id="narration-text"></div>
     </div>
@@ -65,24 +62,28 @@ require_once __DIR__ . '/header.html';
             <?php if ($azhariAlive): ?>
                 <?php if ($nikas_offer === 'refuse'): ?>
                     <!-- Fin 1 : Lysandor meurt, Azhari seul -->
-                    <div><strong>Nika :</strong> Lysandor n’est plus là... C’est dur à accepter.</div>
-                    <div><strong>Azhari :</strong> Je continuerai seul à Piltover, pour nous deux.</div>
+                    <div><strong>Nika :</strong> Voilà où vos choix vous ont mené. Piltover t’attend… seul.</div>
+                    <div><strong>Azhari :</strong> Lysandor, je suis là. Mais sans toi, la lumière de cette cité me paraît bien
+                        terne.</div>
+                    <div><strong>Azhari :</strong> Ce n’est pas le futur qu’on s’était promis en fuyant Noxus...</div>
                 <?php elseif ($nikas_offer === 'accept'): ?>
                     <!-- Fin 2 : Azhari + Lysandor + Nika, 3 persos -->
-                    <div><strong>Lysandor :</strong> Trois mois à Zaun, Piltover nous voilà enfin.</div>
-                    <div><strong>Nika :</strong> Ce nouveau départ va nous changer tous.</div>
-                    <div><strong>Azhari :</strong> Je suis prêt à tout pour Piltover.</div>
+                    <div><strong>Lysandor :</strong> Trois mois de survie à Zaun... mais enfin, voici Piltover.</div>
+                    <div><strong>Nika :</strong> Cette cité est peut-être votre chance. Ou votre nouveau défi, à bientôt
+                        peut-être.</div>
+                    <div><strong>Azhari :</strong> Ensemble, on saura y tracer notre chemin.</div>
                 <?php endif; ?>
             <?php else: ?>
                 <?php if ($nikas_offer === 'accept'): ?>
                     <!-- Fin 3 : Lysandor + Nika -->
-                    <div><strong>Lysandor :</strong> Je choisis de rester, Zaun est ma maison.</div>
-                    <div><strong>Nika :</strong> Ensemble, nous affronterons les ombres.</div>
+                    <div><strong>Lysandor :</strong> Piltover est belle… mais je préfère bâtir ma vie ici, dans l’ombre de Zaun.
+                    </div>
+                    <div><strong>Nika :</strong> Tu trouveras plus qu’un abri ici. Tu trouveras une famille.</div>
                 <?php elseif ($nikas_offer === 'refuse'): ?>
                     <!-- Fin 4 : Lysandor + Teeva -->
-                    <div><strong>Lysandor :</strong> Je pars pour Piltover, en mémoire d’Azhari.</div>
-                    <div><strong>Teeva :</strong> Piltover est plus fournie en soleil mais tu n'échapperas pas aux ombres pour
-                        autant...</div>
+                    <div><strong>Lysandor :</strong> Piltover… peut-être qu'ici, je trouverai le sens à tout ça.</div>
+                    <div><strong>Teeva :</strong> Garde ton cap, mais reste méfiant. Ici, même la lumière peut aveugler.</div>
+                    <div><strong>Nika :</strong> J’aurais voulu que tu restes. Mais je comprends… adieu, Lysandor.</div>
                 <?php endif; ?>
             <?php endif; ?>
         </div>

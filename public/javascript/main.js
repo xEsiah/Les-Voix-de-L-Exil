@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let clickTrigger = 2;
   if (chapterClass && chapterClass[0] === "background-chapter3") {
     if (window.location.pathname.includes("chapter3/answer.php")) {
-      clickTrigger = azhariAlive ? Infinity : 19;
+      clickTrigger = azhariAlive ? Infinity : 12;
     } else {
       clickTrigger = azhariAlive ? 2 : 1;
     }
@@ -46,17 +46,63 @@ document.addEventListener("DOMContentLoaded", () => {
     })(),
     "background-chapter2":
       "Sous le vent sec de Drazhan, la capitale de Noxus s’efface. Devant eux, une plaine désertique... et derrière, un empire qu’ils ont défié refusant de les laisser fuir.",
-    "background-chapter3":
-      "Zaun, l'enfer sous Piltover, où la loi du plus fort est de mise.",
-    "background-chapter4":
-      "Piltover, la cité de la lumière, mais aussi de la discorde.",
+    "background-chapter3": (() => {
+      const path = window.location.pathname;
+      if (path.includes("index.php")) {
+        if (typeof azhariAlive !== "undefined") {
+          if (azhariAlive === true) {
+            return "Azhari et Lysandor survécurent à la traque de Darius. À Zaun, ils reprennent leur souffle, traqués mais unis.";
+          } else {
+            return "Darius, méfiant, envoya des soldats aux trousses de Lysandor. Azhari périt pendant la traversée jusqu’à Zaun.";
+          }
+        }
+        return "Zaun, l'enfer sous Piltover, où la loi du plus fort est de mise.";
+      } else {
+        if (typeof azhariAlive !== "undefined") {
+          if (azhariAlive === true) {
+            if (typeof nikasOffer !== "undefined") {
+              if (nikasOffer === "accept") {
+                return "Azhari et Lysandor, acceptant l'offre de Nika, trouveront refuge à Zaun pendant 3 mois avant de rejoindre Piltover.";
+              } else {
+                return "Azhari et Lysandor refusant l'aide de Nika regretteront bientôt leur choix.";
+              }
+            }
+            return "Azhari et Lysandor survécurent à la traque de Darius. À Zaun, ils reprennent leur souffle, traqués mais unis.";
+          } else {
+            return "Lysandor, receuilli par Teeva erra 6 mois dans les bas-fonds de Zaun, hanté par la mort d’Azhari. Durant ce temps il rencontrera une certaine Nika.";
+          }
+        }
+      }
+    })(),
+
+    "background-chapter4": (() => {
+      if (
+        typeof azhariAlive !== "undefined" &&
+        typeof nikasOffer !== "undefined"
+      ) {
+        if (azhariAlive === true && nikasOffer === "refuse") {
+          // Fin 1 : Azhari seul à Piltover
+          return "Vient Piltover, éclatante et indifférente. Azhari foule ses rues seul, le cœur alourdi par la perte de Lysandor.";
+        } else if (azhariAlive === true && nikasOffer === "accept") {
+          // Fin 2 : Azhari, Lysandor et Nika arrivent ensemble
+          return "Piltover s’élève, majestueuse. Deux âmes marquées par Noxus puis par Zaun cherchent ici un nouveau départ.";
+        } else if (azhariAlive === false && nikasOffer === "accept") {
+          // Fin 3 : Lysandor reste à Zaun
+          return "Piltover brille à l’horizon… mais Lysandor détourne les yeux. L’ombre de Zaun lui semble plus familière, plus honnête.";
+        } else if (azhariAlive === false && nikasOffer === "refuse") {
+          // Fin 4 : Lysandor part pour Piltover seul
+          return "Piltover étend ses ponts et ses tours. Seul, Lysandor avance, porteur du souvenir d’Azhari et d'une promesse tenue.";
+        }
+      }
+      return "Piltover, la cité de la lumière, mais aussi de la discorde.";
+    })(),
   };
 
   const narrationText =
     chapterMessages[chapterClass ? chapterClass[0] : "default"] ||
     "Dans un monde de ténèbres, la lumière n'est jamais loin...";
 
-  showNarration(narrationText, 500, () => {
+  showNarration(narrationText, 4000, () => {
     document
       .querySelectorAll(".sprite")
       .forEach((el) => el.classList.remove("invisible-init"));
@@ -71,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 50);
   });
 
-  function showNarration(text, duration = 500, callback = null) {
+  function showNarration(text, duration = 3000, callback = null) {
     const box = document.getElementById("narration-box");
     const textElement = document.getElementById("narration-text");
 
@@ -270,11 +316,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const match = currentPath.match(/(chapter)(\d+)/i);
       if (match) {
         const currentChapNum = parseInt(match[2], 10);
-        const nextChapNum = currentChapNum + 1;
-        const nextChapUrl = currentPath.replace(
-          /chapter\d+/i,
-          `chapter${nextChapNum}`
-        );
+        let nextChapUrl;
+        if (currentChapNum === 4) {
+          nextChapUrl = "/Les-Voix-De-L-Exil/public/epilogue.php";
+        } else {
+          nextChapUrl = currentPath.replace(
+            /chapter\d+/i,
+            `chapter${currentChapNum + 1}`
+          );
+        }
         window.location.href = nextChapUrl;
       } else {
         window.location.href = "/Les-Voix-De-L-Exil/public/chapter2/index.php";

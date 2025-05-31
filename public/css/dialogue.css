@@ -36,19 +36,3 @@
   margin-left: auto;
   border-radius: 12px 12px 0 12px;
 }
-
-.murmure {
-  font-style: italic;
-  opacity: 0.75;
-  font-size: 1.2rem;
-  color: #ccc;
-}
-
-.cri {
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #ff4d4d;
-  letter-spacing: 1px;
-  font-size: 1.7rem;
-  animation: shake 0.3s ease-in-out;
-}

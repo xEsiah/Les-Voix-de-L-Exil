@@ -13,11 +13,10 @@ $good_answer = $_SESSION['good_answer'];
 <!DOCTYPE html>
 <html>
 <?php
-require_once __DIR__ . '/../../includes/globalHead.html';
-require_once __DIR__ . '/header.html';
-?>
+require_once __DIR__ . '/../../includes/globalHead.html'; ?>
 
 <body class="background-chapter2">
+    <?php require_once __DIR__ . '/header.html'; ?>
     <div id="narration-box" class="narration-hidden">
         <p id="narration-text"></p>
     </div>
@@ -69,7 +68,6 @@ require_once __DIR__ . '/header.html';
     <script>
         const goodAnswer = <?php echo json_encode($good_answer === 'true'); ?>;
     </script>
-
 </body>
 
 </html>

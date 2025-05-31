@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <?php
-require_once __DIR__ . '/../../includes/globalHead.html';
-require_once __DIR__ . '/header.html'; ?>
+require_once __DIR__ . '/../../includes/globalHead.html'; ?>
 
 <body class="background-chapter1">
+    <?php require_once __DIR__ . '/header.html'; ?>
     <div id="narration-box" class="narration-hidden">
         <p id="narration-text"></p>
     </div>

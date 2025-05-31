@@ -3,23 +3,19 @@ require_once __DIR__ . '/../includes/header.html';
 ?>
 
 <body class="background-introduction">
-
-    <!-- inclure les renders des personnages et le code permettant d'alterner leur positions (et leur luminosité en fonction de qui parle) 
-     sur le background quand le joueur passse au dialogue suivant -->
     <section class="introduction">
         <div class="intro-box">
             <p>
-                Dans les profondeurs du <strong>Bastion Immortel</strong>, là où résonnent les cris des combattants des
-                arènes et où le sang sèche à même la pierre, deux jeunes hommes rêvent de liberté.
-                <strong>Azhari</strong>, ancien érudit réduit au rôle de gladiateur, et <strong>Lysandor</strong>,
-                héritier d’un nom maudit, souhaitent fuir l’ombre de Noxus dans l’espoir d’un renouveau.
+                À <strong>Noxus</strong>, au cœur de la cité où résonnent les cris des arènes et où le sang sèche sur la
+                pierre, deux jeunes hommes rêvent de liberté.
+                <strong>Azhari</strong>, ancien érudit devenu gladiateur, et <strong>Lysandor</strong>, héritier d’un
+                nom lié à la guerre, aspirent à fuir l’ombre de Noxus pour un renouveau.
             </p>
             <p>
-                Leur chemin les mènera à travers les <strong>Terres Déchirées</strong>, les ruelles toxiques de
-                <strong>Zaun</strong>
-                et les hauteurs étincelantes de <strong>Piltover</strong>. À chaque pas, des choix décisifs les
-                attendent : fuir ou combattre, trahir ou
-                espérer.
+                Depuis les sombres remparts du <strong>Bastion Immortel</strong>, ils s’élanceront à travers les
+                <strong>Plaines de Drazhan</strong>, traverseront la mer vers <strong>Zaun</strong>, avant peut-être
+                d’atteindre les hauteurs étincelantes de <strong>Piltover</strong>.
+                À chaque étape, ils feront face à l’abandon, au courage et à la promesse incertaine d’un nouveau départ.
             </p>
             <p class="quote">
                 « Je suis prêt à naître de nouveau. »
@@ -27,13 +23,11 @@ require_once __DIR__ . '/../includes/header.html';
             <p class="author">
                 Lysandor du Couteau
             </p>
-
             <a href="chapter0/index.php" class="cta-button">
                 Commencer l’aventure
             </a>
         </div>
     </section>
-    <img src="images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left" />
-    <img src="images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right" />
+
+    <?php require_once __DIR__ . '/../includes/footer.html'; ?>
 </body>
-<?php require_once __DIR__ . '/../includes/footer.html'; ?>

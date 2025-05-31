@@ -26,11 +26,10 @@ if (isset($_POST['azhariAlive'])) {
 <!DOCTYPE html>
 <html lang="fr">
 <?php
-require_once __DIR__ . '/../../includes/globalHead.html';
-require_once __DIR__ . '/header.html';
-?>
+require_once __DIR__ . '/../../includes/globalHead.html'; ?>
 
 <body class="background-chapter3">
+    <?php require_once __DIR__ . '/header.html'; ?>
     <div id="narration-box" class="narration-hidden">
         <p id="narration-text"></p>
     </div>
@@ -60,45 +59,35 @@ require_once __DIR__ . '/header.html';
                     <div><strong>Nika : </strong> Vraiment vous refusez mon aide?! Vous faites une grave erreur.</div>
                 <?php }
             } else { ?>
-                <div><strong>Lysandor : </strong> Six mois déjà... Chaque jour, cette ville semble un peu plus étrangère.
-                </div>
-                <div><strong>Teeva : </strong> Zaun n’est pas tendre avec ceux qui marchent seuls. La solitude creuse plus
-                    que des blessures.</div>
-                <div><strong>Lysandor : </strong> J’ai l’impression que l’ombre d’Azhari plane partout où je vais... et
-                    pourtant, il n’est plus là.</div>
-                <div><strong>Teeva : </strong> Le passé pèse lourd, mais il ne doit pas devenir une prison. Tu dois choisir
-                    où poser tes pas.</div>
-                <div><strong>Lysandor : </strong> La promesse qu’on s’est faite à Piltover... Elle m’appelle encore. Mais
-                    cette ville, elle me retient.</div>
-                <div><strong>Teeva : </strong> Piltover est une lumière lointaine. Zaun, elle est sombre, mais c’est ici que
-                    tu vis aujourd’hui.</div>
-                <div><strong>Lysandor : </strong> Parfois je crois entendre la voix d’Azhari dans le vent qui s’engouffre
-                    dans ces ruelles. Comme s’il me disait de ne pas abandonner.</div>
-                <div><strong>Teeva : </strong> Ou peut-être te pousse-t-il à forger un nouveau chemin, même si ce n’est pas
-                    celui prévu.</div>
-                <div><strong>Lysandor : </strong> Cette ville grouille d’âmes perdues et d’histoires
-                    brisées... Mais parfois, une lumière inattendue perce à travers les fissures.</div>
-                <div><strong>Teeva : </strong> Comme cette fille que tu as vue ?</div>
-                <div><strong>Lysandor : </strong> Oui... elle est passée, silencieuse, presque un mirage. Son regard m’a
-                    frappé. Quelque chose d’étrangement familier.</div>
-                <div><strong>Teeva : </strong> Parfois, ce sont ces rencontres fugaces qui changent tout. Zaun cache plus
-                    que de la misère, Lysandor.</div>
-                <div><strong>Lysandor : </strong> Elle ne m’a rien dit… mais il y avait quelque chose dans ses yeux. Comme
-                    une histoire pas encore écrite.</div>
-                <div><strong>Teeva : </strong> Parfois, il suffit d’un regard pour réveiller ce qu’on pensait éteint.</div>
-                <div><strong>Lysandor : </strong> Je ne sais pas si c’est un espoir... ou juste un autre détour pour éviter
-                    le vide.</div>
-                <div><strong>Teeva : </strong> On évite rarement le vide, Lysandor. Mais on peut choisir avec qui on y fait
-                    face.</div>
-                <div><strong>Lysandor : </strong> Piltover, c’était notre rêve, à Azhari et moi. Mais ici… ici, il y a
-                    quelque chose d’inattendu. Fragile, mais réel.</div>
-                <div><strong>Teeva : </strong> Les choix les plus difficiles forgent ceux que nous devenons.</div>
-                <div><strong>Lysandor : </strong> Demain, je déciderai... Pour l’instant, je dois
-                    apprendre à écouter cette ville, et peut-être... elle aussi, à m’accepter.</div>
-                <div><strong>Nika : </strong> Lysandor... Je peux t’accompagner dans cette obscurité,
-                    si tu le souhaites.</div>
-                <div><strong>Lysandor : </strong> Nika!... Tu étais là, tout ce temps?</div>
-                <div><strong>Nika : </strong> Toujours. Parfois, il suffit juste d’oser regarder au-delà des ombres.</div>
+                <div><strong>Lysandor :</strong> Piltover... si proche, et pourtant, je suis toujours là. Six mois à Zaun,
+                    et je ne sais plus si je grimpe ou si je coule.</div>
+                <div><strong>Teeva :</strong> Zaun change ceux qui y survivent. Elle teste, elle brise, mais parfois… elle
+                    révèle.</div>
+                <div><strong>Lysandor :</strong> L’écho d’Azhari me suit. Comme un murmure entre les conduits. Il aurait su
+                    quoi faire...</div>
+                <div><strong>Teeva :</strong> Il t’a laissé ses rêves, mais la route est désormais la tienne. Ne reste pas
+                    figé dans ses pas.</div>
+                <div><strong>Lysandor :</strong> Piltover nous fascinait. La cité des idées. Mais aujourd’hui, c’est Zaun
+                    qui me confronte à la réalité.</div>
+                <div><strong>Teeva :</strong> Là-haut, la lumière est forte. Ici, l’ombre t’enseigne. Où veux-tu ouvrir les
+                    yeux ?</div>
+                <div><strong>Lysandor :</strong> Les yeux de Nika ont croisé les miens l’autre jour. Un regard, et toutes
+                    mes certitudes vacilles. Quelque chose d’indicible…</div>
+                <div><strong>Teeva :</strong> Ce genre de rencontres ne sont jamais anodines. Peut-être Zaun t’envoie un
+                    message?</div>
+                <div><strong>Lysandor :</strong> J’y ai vu une faille dans ma douleur. Une promesse. Ou une fuite ? Je n’en
+                    sais rien.</div>
+                <div><strong>Teeva :</strong> Piltover offre un avenir construit. Zaun, un avenir à construire. Le confort
+                    ou le combat.</div>
+                <div><strong>Lysandor :</strong> Ce choix me ronge. Rester avec ce qui commence ici… ou monter là-haut, avec
+                    ses fantômes.</div>
+                <div><strong>Teeva :</strong> N’oublie pas : ce n’est pas la ville qui donne du sens, mais ceux qui y
+                    marchent avec toi.</div>
+                <div><strong>Nika :</strong> Si tu choisis l’ombre, je marcherai à tes côtés. Mais si ton cœur monte vers
+                    Piltover… je le comprendrai.</div>
+                <div><strong>Lysandor :</strong> Nika… j’ignorais que tu étais encore là.</div>
+                <div><strong>Nika :</strong> J’ai toujours été là. Parfois, il faut juste bien ouvrir les yeux, même dans
+                    les sombres profondeurs.</div>
             <?php } ?>
         </div>
 
@@ -109,8 +98,8 @@ require_once __DIR__ . '/header.html';
                 <input type="hidden" name="azhariAlive" value="false">
                 <button type="submit" name="nikas_offer" value="accept" class="choice-button">Rester à Zaun avec
                     Nika</button>
-                <button type="submit" name="nikas_offer" value="refuse" class="choice-button">Honorer Azhari et aller à
-                    Piltover</button>
+                <button type="submit" name="nikas_offer" value="refuse" class="choice-button">Partir à Piltover sans
+                    Azhari</button>
             </form>
         <?php endif; ?>
     </div>
