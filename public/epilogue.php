@@ -13,7 +13,7 @@ if ($azhariAlive) {
     if ($nikas_offer === 'refuse') {
         $backgroundImage = '/images/viewPiltoverFocused.jpeg';
     } else {
-        $backgroundImage = '/images/viewPiltoverinnovationPark.jpg';
+        $backgroundImage = '/images/viewPiltoverInnovationPark.jpg';
     }
 } else {
     if ($nikas_offer === 'accept') {
