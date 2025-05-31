@@ -17,6 +17,7 @@ session_start();
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet" />
     <script src="javascript/main.js"></script>
+    <icon rel="icon" type="image/png" href="images/icon.ico" sizes="16x16 32x32 48x48 64x64 128x128 256x256"></icon>
 </head>
 <style>
     body {
