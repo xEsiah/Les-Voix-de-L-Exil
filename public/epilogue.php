@@ -11,15 +11,15 @@ if ($nikas_offer === null) {
 }
 if ($azhariAlive) {
     if ($nikas_offer === 'refuse') {
-        $backgroundImage = 'images/viewPiltoverFocused.jpeg';
+        $backgroundImage = '/images/viewPiltoverFocused.jpeg';
     } else {
-        $backgroundImage = 'images/viewPiltoverinnovationPark.jpg';
+        $backgroundImage = '/images/viewPiltoverinnovationPark.jpg';
     }
 } else {
     if ($nikas_offer === 'accept') {
-        $backgroundImage = 'images/viewZaunUpSide.jpg';
+        $backgroundImage = '/images/viewZaunUpSide.jpg';
     } else {
-        $backgroundImage = 'images/viewPiltoverMainStreet.jpg';
+        $backgroundImage = '/images/viewPiltoverMainStreet.jpg';
     }
 }
 
