@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentChapNum = parseInt(match[2], 10);
         let nextChapUrl;
         if (currentChapNum === 4) {
-          nextChapUrl = "/Les-Voix-De-L-Exil/public/epilogue.php";
+          nextChapUrl = "/epilogue.php";
         } else {
           nextChapUrl = currentPath.replace(
             /chapter\d+/i,
@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         window.location.href = nextChapUrl;
       } else {
-        window.location.href = "/Les-Voix-De-L-Exil/public/chapter2/index.php";
+        window.location.href = "/chapter2/index.php";
       }
     }
   });

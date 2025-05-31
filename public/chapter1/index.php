@@ -10,7 +10,7 @@ require_once __DIR__ . '/../../includes/globalHead.html'; ?>
     </div>
 
     <div class="page-container">
-        <img src="../images/Darius.png" alt="Darius" class="sprite sprite-left hidden" id="darius" />
+        <img src="../images/Darius.PNG" alt="Darius" class="sprite sprite-left hidden" id="darius" />
         <img src="../images/AzhariShenReversed.png" alt="Azhari" class="sprite sprite-left invisible-init"
             id="azhari" />
         <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right invisible-init"

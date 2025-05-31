@@ -21,7 +21,7 @@ require_once __DIR__ . '/../../includes/globalHead.html'; ?>
         <p id="narration-text"></p>
     </div>
     <div class="page-container">
-        <img src="../images/Darius.png" alt="Darius" class="sprite sprite-left invisible-init" id="darius" />
+        <img src="../images/Darius.PNG" alt="Darius" class="sprite sprite-left invisible-init" id="darius" />
         <img src="../images/AzhariShen.png" alt="Azhari" class="sprite sprite-right-right invisible-init" id="azhari" />
         <img src="../images/LysandorDuCouteau.png" alt="Lysandor" class="sprite sprite-right invisible-init"
             id="lysandor" />
